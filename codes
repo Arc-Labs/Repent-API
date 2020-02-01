@@ -1,0 +1,26 @@
+0: Your name must be at least 2 characters
+1: A user already exists with that username
+2: Password must be at least 6 characters or more
+3: Failed to search for existing user in database, please try again
+4: Failed to hash password, please try again
+5: Failed to create user in database, please try again
+6: Failed to generate session token, please login and try again
+7: There is no user in the database with that email, please try another email
+8: Failed to search database for a user with that email, please try again
+9: You have entered a invalid password, please try another password
+10: Failed to compare hashed password with the password entered, please try again
+11: Failed to generate session token, please try again
+12: Vote type must be common or deadliest
+13: Vote score must be either +1 or -1
+14: Failed to search for this sin in database, please try again
+15: The sin you are trying to vote on doesn't exist anymore, please refresh the sin list by pulling up on the list of sins
+16: Failed to check for your existing vote, please try again
+17: Failed to create vote in database, please try again
+18: Failed to update vote in database, please try again
+19: The scenario you are trying to vote on doesn't exist anymore, please refresh the scenario list by pulling up on the list of scenarios
+20: Failed to search for this scenario in database, please try again
+21: Vote type must be best
+22: The repentance you are trying to vote on doesn't exist anymore, please refresh the repentance list by pulling up on the list of repentances
+23: Failed to search for this repentance in database, please try again
+
+403: Failed to authenticate session, please logout and login to access
