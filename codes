@@ -22,5 +22,13 @@
 21: Vote type must be best
 22: The repentance you are trying to vote on doesn't exist anymore, please refresh the repentance list by pulling up on the list of repentances
 23: Failed to search for this repentance in database, please try again
+24: Failed to fetch user in database from your session, please try again
+25: Failed to find a user with your session, please logout and try again
+26: Your name must not contain numbers or special characters
+27: Failed to save name changes, please try again
+28: Sort paramater is required and must be COMMON or DEADLIEST
+29: Failed to fetch sins from database, please try again
+30: Failed to iterate through sins to grab votes, please try again
+31: 
 
 403: Failed to authenticate session, please logout and login to access

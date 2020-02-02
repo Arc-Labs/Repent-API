@@ -1,13 +1,57 @@
-import { Router } from '../repentance/node_modules/router'
+import async from 'async'
+import { Router } from 'express'
 
 import db from '../../database'
+import { session } from '../../utils'
 
 const router = Router()
 const { Sin, Vote } = db
 
+router.use(session(true))
+
 router.route('/')
   .get(async (req, res) => {
+    try {
+      const { sort } = req.params
+      let { page } = req.params
 
+      if (!page)
+        page = 0
+
+      if (sort !== 'COMMON' && sort !== 'DEADLIEST')
+        return res.json({ err: 28 })
+
+      const sins = await Sin.findAll({})
+
+      for (let x = 0; x < sins.length; x++)
+        sins[x] = sins[x].get({ plain: true })
+
+      const sinsWithVotes = async.eachSeries(sins, async (sin, next) => {
+        try {
+          const votes = await Vote.findAll({ where: { sinUUID: sin.uuid }})
+          sin.commonVotes = 0
+          sin.deadlyVotes = 0
+
+          for (let x = 0; x < votes.length; x++)
+            if (votes[x].type === 'COMMON')
+              sin.commonVotes += votes[x].score
+            else if (votes[x].type === 'DEADLIEST')
+              sin.deadlyVotes += votes[x].score
+
+          next()
+        } catch (err) {
+          sin = undefined
+          next()
+        }
+      }, async err => {
+        if (err)
+          return res.json({ err: 30 })
+
+        console.log(sinsWithvotes)
+      })
+    } catch (err) {
+      res.json({ err: 29 })
+    }
   })
 
 router.route('/:uuid/vote')

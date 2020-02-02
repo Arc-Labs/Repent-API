@@ -17,8 +17,6 @@ const model = (sequelize, DataTypes) => {
   })
 
   Vote.associate = (models) => {
-    Vote.hasMany(models.Scenario, { as: 'scenarios', foreignKey: 'VoteUUID' })
-    Vote.hasMany(models.Vote, { as: 'votes', foreignKey: 'VoteUUID' })
   }
 
   return Vote

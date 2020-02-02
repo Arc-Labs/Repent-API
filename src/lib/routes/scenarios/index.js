@@ -1,9 +1,12 @@
 import { Router } from '../repentance/node_modules/router'
 
 import db from '../../database'
+import { session } from '../../utils'
 
 const router = Router()
 const { Scenario, Vote } = db
+
+router.use(session(true))
 
 router.route('/')
   .get(async (req, res) => {

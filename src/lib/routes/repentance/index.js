@@ -1,9 +1,12 @@
 import { Router } from 'router'
 
 import db from '../../database'
+import { session } from '../../utils'
 
 const router = Router()
 const { Repentance, Vote } = db
+
+router.use(session(true))
 
 router.route('/')
   .get(async (req, res) => {

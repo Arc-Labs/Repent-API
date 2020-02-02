@@ -10,7 +10,10 @@ const { User } = db
 router.route('/register')
   .post(async (req, res) => {
     try {
-      const { name, email, password } = req.body
+      const { name, email, password, photo } = req.body
+
+      if (!name.match(/^[A-Za-z]+$/))
+        return res.json({ err: 26 })
 
       if (name.length < 2)
         return res.json({ err: 0 })
